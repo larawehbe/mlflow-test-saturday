@@ -7,9 +7,10 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
 # 1) Point to your tracking server + experiment
-mlflow.set_tracking_uri("http://127.0.0.1:5000")
-mlflow.set_experiment("mlops-course")
-
+# mlflow.set_tracking_uri("http://127.0.0.1:5000")
+# mlflow.set_experiment("mlops-course")
+import dagshub
+dagshub.init(repo_owner='larawehbe', repo_name='mlflow-test-saturday', mlflow=True)
 
 
 

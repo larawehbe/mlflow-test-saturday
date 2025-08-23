@@ -17,3 +17,9 @@ pip3 install dvc
 dvc init
 #### create data/ folder and add a data.txt file
 dvc add data/
+
+then add dvc add data/data.txt
+
+#### now add dagshub
+import dagshub
+dagshub.init(repo_owner='larawehbe', repo_name='mlflow-test-saturday', mlflow=True)
