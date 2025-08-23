@@ -21,5 +21,6 @@ dvc add data/
 then add dvc add data/data.txt
 
 #### now add dagshub
+| to work with dagshub, we need mlflow<3
 import dagshub
 dagshub.init(repo_owner='larawehbe', repo_name='mlflow-test-saturday', mlflow=True)

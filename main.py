@@ -11,7 +11,8 @@ from sklearn.metrics import accuracy_score
 # mlflow.set_experiment("mlops-course")
 import dagshub
 dagshub.init(repo_owner='larawehbe', repo_name='mlflow-test-saturday', mlflow=True)
-
+# mlflow.set_tracking_uri("https://dagshub.com/larawehbe/mlflow-test-saturday.mlflow")
+mlflow.set_experiment("mlops-course")
 
 
 # import dagshub
@@ -34,13 +35,11 @@ for n in [10, 50, 100]:
         clf.fit(X_tr, y_tr)
         preds = clf.predict(X_te)
         acc = accuracy_score(y_te, preds)
-        mse = ((y_te - preds) ** 2).mean()
 
         # 3) Log params/metrics
         mlflow.log_param("n_estimators", n)
         mlflow.log_param("max_depth", max_depth)
         mlflow.log_metric("accuracy", acc)
-        mlflow.log_metric("mse", mse)
 
         # 4) Save signature so serving knows the input schema
         signature = infer_signature(X_tr, clf.predict(X_tr))
