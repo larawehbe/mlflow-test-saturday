@@ -4,3 +4,4 @@ mlruns
 mlflow.db
 /data
 .pytest_cache
+.env
