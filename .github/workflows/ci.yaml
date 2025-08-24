@@ -31,3 +31,20 @@ jobs:
       - name: Test with pytest
         run: |
           pytest
+      - name: Build Docker image
+        run: |
+          docker build -t mlflow-test-saturday .
+      - name: Run Docker container
+        run: |
+          docker run -d -p 8000:8000 --name mlflow-test-saturday \
+            -e MLFLOW_TRACKING_URI="https://dagshub.com/larawehbe/mlflow-test-saturday.mlflow" \
+            -e MLFLOW_TRACKING_USERNAME="$DAGSHUB_USER" \
+            -e MLFLOW_TRACKING_PASSWORD="$DAGSHUB_TOKEN" \
+            mlflow-test-saturday
+      - name: Verify Docker container is running
+        run: |
+          docker ps | grep mlflow-test-saturday
+      - name: Stop and remove Docker container
+        run: |
+          docker stop mlflow-test-saturday
+          docker rm mlflow-test-saturday  
