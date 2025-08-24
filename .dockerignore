@@ -1,0 +1,17 @@
+# Don’t copy local clutter into the image
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.sqlite
+.mlruns/
+.artifacts/
+.venv/
+venv/
+env/
+dist/
+build/
+.git/
+.gitignore
+.DS_Store
